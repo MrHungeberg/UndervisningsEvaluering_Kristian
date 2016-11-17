@@ -3,6 +3,15 @@ var SDK = {
     serverURL: "http://localhost:9999/api",
 
     login: function (username, password, cb) {
+
+        $.ajax({
+           url: SDK.serverURL + "/login",
+           type: 'POST',
+           success: function(data) {
+              console.log(data)
+           }
+       });
+
         this.request({
             data: {
                 cbsMail: username,
