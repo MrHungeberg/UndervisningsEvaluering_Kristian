@@ -1,6 +1,6 @@
 var SDK = {
 
-    serverURL: "http://localhost:5000/api",
+    serverURL: "http://localhost:9999/api",
 
     login: function (username, password, cb) {
         this.request({
@@ -42,4 +42,3 @@ var SDK = {
         }
     }
 }
-
