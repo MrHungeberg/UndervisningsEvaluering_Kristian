@@ -2,16 +2,31 @@ var SDK = {
 
     serverURL: "http://localhost:9999/api",
 
-    login: function (username, password, cb) {
+    login: function (mail, password, cb) {
 
         $.ajax({
-           url: SDK.serverURL + "/login",
            type: 'POST',
-           success: function(data) {
-              console.log(data)
-           }
+           url: SDK.serverURL + "/login",
+           contentType: "application/json; charset=utf-8",
+           data: JSON.stringify({
+             cbsMail: mail,
+             password: password
+           }),
+           dataType: "json",
+           success: function(res) { alert(res) },
+           error: function(res) { alert('Failed!'); },
        });
+      /*
+       $.ajax({
+          type: 'GET',
+          url: SDK.serverURL + "/course/6",
+          dataType:'json',
+          success: function() { alert("Success"); },
+          error: function() { alert('Failed!'); },
+      });
+      */
 
+        /*
         this.request({
             data: {
                 cbsMail: username,
@@ -29,7 +44,7 @@ var SDK = {
 
             cb(null, data);
 
-        });
+        });*/
     },
 
     Storage: {
