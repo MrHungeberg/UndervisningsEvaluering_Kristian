@@ -4,6 +4,13 @@ var SDK = {
 
     login: function (mail, password, cb) {
 
+
+      let SALT;
+      let passWithSalt = password + SALT;
+      let hashedPassWithSalt = md5(passWithSalt);
+      let passWithSalt2 = hashedPassWithSalt + SALT;
+      let hashedPassWithSalt2 = md5(passWithSalt2);
+
         $.ajax({
            type: 'POST',
            url: SDK.serverURL + "/login",
@@ -14,8 +21,9 @@ var SDK = {
            }),
            dataType: "json",
            success: function(res) {
-             var decodeString = JSON.parse(atob(res))
-             alert(decodeString.id)
+             var userId = JSON.parse(atob(res))
+             SDK.Storage.persist("userId", userId);
+             alert(userId);
            },
            error: function(res) { alert('Failed!'); },
        });
