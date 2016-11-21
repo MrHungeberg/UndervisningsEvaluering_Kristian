@@ -21,6 +21,7 @@ var SDK = {
            dataType: "json",
            success: function(res) {
              var user = JSON.parse(atob(res))
+             console.log(user)
              var userId = user.id
              SDK.Storage.persist("userId", userId);
              alert(userId)
