@@ -1,6 +1,6 @@
 var SDK = {
 
-    serverURL: "http://localhost:9999/api",
+    serverURL: "http://localhost:5000/api",
 
     login: function (mail, password, cb) {
 
@@ -22,42 +22,17 @@ var SDK = {
            success: function(res) {
              var user = JSON.parse(atob(res))
              console.log(user)
-             console.log("durumrullen")
              var userId = user.id
              SDK.Storage.persist("userId", userId);
+               if (user.type = "student")
+                   window.location.href = "studerendeView.html";
+               else if (user.type = "teacher")
+                   window.location.href = "underviserView.html";
              alert(userId)
            },
            error: function(res) { alert('Failed!'); },
        });
-      /*
-       $.ajax({
-          type: 'GET',
-          url: SDK.serverURL + "/course/6",
-          dataType:'json',
-          success: function() { alert("Success"); },
-          error: function() { alert('Failed!'); },
-      });
-      */
 
-        /*
-        this.request({
-            data: {
-                cbsMail: username,
-                password: password
-            },
-            url: "/login/",
-            method: "POST"
-        }, function (err, data) {
-
-            //On login-error
-            if (err) return cb(err);
-
-            SDK.Storage.persist("userId", data.userId);
-            SDK.Storage.persist("user", data.user);
-
-            cb(null, data);
-
-        });*/
     },
 
     Storage: {
