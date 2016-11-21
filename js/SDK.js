@@ -28,7 +28,6 @@ var SDK = {
                    window.location.href = "studerendeView.html";
                else if (user.type = "teacher")
                    window.location.href = "underviserView.html";
-             alert(userId)
            },
            error: function(res) { alert('Failed!'); },
        });
