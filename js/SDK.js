@@ -4,8 +4,7 @@ var SDK = {
 
     login: function (mail, password, cb) {
 
-
-      let SALT;
+      let SALT = "n0zaCTADRUuTb@JUp01n%5@(l@IAaLlZ";
       let passWithSalt = password + SALT;
       let hashedPassWithSalt = md5(passWithSalt);
       let passWithSalt2 = hashedPassWithSalt + SALT;
@@ -17,13 +16,13 @@ var SDK = {
            contentType: "application/json; charset=utf-8",
            data: JSON.stringify({
              cbsMail: mail,
-             password: password
+             password: hashedPassWithSalt2
            }),
            dataType: "json",
            success: function(res) {
-             var userId = JSON.parse(atob(res))
+             var user = JSON.parse(atob(res))
+             var userId = user.id
              SDK.Storage.persist("userId", userId);
-             alert(userId);
            },
            error: function(res) { alert('Failed!'); },
        });
