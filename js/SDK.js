@@ -13,7 +13,10 @@ var SDK = {
              password: password
            }),
            dataType: "json",
-           success: function(res) { alert(res) },
+           success: function(res) {
+             var decodeString = atob(res)
+             alert(decodeString)
+           },
            error: function(res) { alert('Failed!'); },
        });
       /*
