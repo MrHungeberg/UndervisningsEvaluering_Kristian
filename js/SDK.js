@@ -14,8 +14,8 @@ var SDK = {
            }),
            dataType: "json",
            success: function(res) {
-             var decodeString = atob(res)
-             alert(decodeString)
+             var decodeString = JSON.parse(atob(res))
+             alert(decodeString.id)
            },
            error: function(res) { alert('Failed!'); },
        });
