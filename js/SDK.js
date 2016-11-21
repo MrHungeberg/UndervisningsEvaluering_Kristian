@@ -23,6 +23,7 @@ var SDK = {
              var user = JSON.parse(atob(res))
              var userId = user.id
              SDK.Storage.persist("userId", userId);
+             alert(userId)
            },
            error: function(res) { alert('Failed!'); },
        });
