@@ -24,10 +24,12 @@ var SDK = {
              console.log(user)
              var userId = user.id
              SDK.Storage.persist("userId", userId);
-               if (user.type = "student")
-                   window.location.href = "studerendeView.html";
-               else if (user.type = "teacher")
-                   window.location.href = "underviserView.html";
+               if (user.type = "student") {
+                 window.location.href = "studerendeView.html";
+               }
+               else if (user.type = "teacher") {
+                 window.location.href = "underviserView.html";
+               }       
            },
            error: function(res) { alert('Failed!'); },
        });
