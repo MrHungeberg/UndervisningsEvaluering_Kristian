@@ -23,13 +23,13 @@ var SDK = {
              var user = JSON.parse(atob(res))
              console.log(user)
              var userId = user.id
+             console.log(user.type);
              SDK.Storage.persist("userId", userId);
-               if (user.type = "student") {
+               if (user.type == "student") {
                  window.location.href = "studerendeView.html";
-               }
-               else if (user.type = "teacher") {
+               } else if(user.type == "teacher") {
                  window.location.href = "underviserView.html";
-               }       
+               }
            },
            error: function(res) { alert('Failed!'); },
        });
